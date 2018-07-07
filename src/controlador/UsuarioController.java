@@ -6,6 +6,7 @@ import modelo.Usuario;
 public class UsuarioController {
 
     public boolean Crear(Usuario usuario) {
+
         return true;
     }
 
