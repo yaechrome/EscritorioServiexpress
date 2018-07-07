@@ -5,6 +5,12 @@
  */
 package controlador;
 
+import bd.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Perfil;
 
@@ -15,13 +21,55 @@ import modelo.Perfil;
 public class PerfilController {
     
     public List<Perfil> listarPerfiles(){
-        List<Perfil> perfiles = null;
+        ArrayList<Perfil> perfiles = null;
+        
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM PERFIL";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            perfiles = new ArrayList<Perfil>();
+            ResultSet rs = buscar.executeQuery();
+
+            while (rs.next()) {
+                Perfil dto = new Perfil();
+                dto.setId(rs.getInt("ID"));
+                dto.setDetallePerfil(rs.getString("DETALLEPERFIL"));
+                perfiles.add(dto);
+            }
+            buscar.close();
+            conexion.close();
+        } catch (SQLException w) {
+            System.out.println("Error SQL al buscar " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }
         
         return perfiles;
     }
     
     public Perfil buscarPorID(int id){
         Perfil perfil = null;
+        
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM PERFIL where ID=?";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.setInt(1, id);
+            ResultSet rs = buscar.executeQuery();
+
+            while (rs.next()) {
+                perfil = new Perfil();
+                perfil.setId(rs.getInt("ID"));
+                perfil.setDetallePerfil(rs.getString("DETALLEPERFIL"));
+
+            }
+            buscar.close();
+            conexion.close();
+        } catch (SQLException w) {
+            System.out.println("Error SQL al buscar " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }
         
         return perfil;
     }
