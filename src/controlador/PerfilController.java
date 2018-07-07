@@ -20,7 +20,7 @@ import modelo.Perfil;
  */
 public class PerfilController {
     
-    public List<Perfil> listarPerfiles(){
+    public ArrayList<Perfil> listarPerfiles(){
         ArrayList<Perfil> perfiles = null;
         
         try {

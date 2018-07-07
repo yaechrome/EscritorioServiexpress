@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import modelo.Perfil;
 import modelo.Usuario;
 
 public class UsuarioController {
@@ -85,12 +86,14 @@ public class UsuarioController {
                 dto.setNombre(rs.getString("nombre"));
                 dto.setApellidoPaterno(rs.getString("apellidopaterno"));
                 dto.setRut(rs.getString("pass_usuario"));
-                dto.setNombre(rs.getString("login_usuario"));
+                dto.setDireccion(rs.getString("direccion"));
 
-//                dto.setCorreoUsuario(rs.getString("correo_usuario"));
-//                dto.setCodigoPerfil(rs.getInt("codigo_perfil"));
-//                dto.setFechaNacimiento(rs.getDate("fechaNacimiento_usuario"));
-//                usuarios.add(dto);
+                dto.setContactoTelefonico(rs.getString("contactotelefonico"));
+                Perfil perfil = new PerfilController().buscarPorID(rs.getInt("perfil"));
+                dto.setPerfil(perfil);
+                dto.setUsername(rs.getString("username"));
+                dto.setPassword(rs.getString("password"));
+                usuarios.add(dto);
             }
             buscar.close();
             conexion.close();
