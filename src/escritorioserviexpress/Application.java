@@ -91,6 +91,7 @@ public class Application extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tabla.setBackground(new java.awt.Color(153, 204, 255));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -129,6 +130,8 @@ public class Application extends javax.swing.JFrame {
 
         jLabel18.setText("RUT");
 
+        btnBuscarPorRut.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscarPorRut.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorRut.setText("Buscar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -162,6 +165,11 @@ public class Application extends javax.swing.JFrame {
 
         jLabel19.setText("Perfil");
 
+        cmbPerfilBuscar.setBackground(new java.awt.Color(51, 153, 255));
+        cmbPerfilBuscar.setForeground(new java.awt.Color(51, 153, 255));
+
+        btnBuscarPorPerfil.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscarPorPerfil.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorPerfil.setText("Buscar");
         btnBuscarPorPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,11 +184,11 @@ public class Application extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19)
-                .addGap(18, 18, 18)
-                .addComponent(cmbPerfilBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbPerfilBuscar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscarPorPerfil)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +201,8 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        btnListarTodos.setBackground(new java.awt.Color(51, 153, 255));
+        btnListarTodos.setForeground(new java.awt.Color(255, 255, 255));
         btnListarTodos.setText("Listar Todos");
         btnListarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +245,7 @@ public class Application extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Listar Usuarios", jPanel2);
 
+        cmbPerfil.setBackground(new java.awt.Color(51, 153, 255));
         cmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("RUT");
@@ -253,8 +264,12 @@ public class Application extends javax.swing.JFrame {
 
         jLabel8.setText("Password");
 
+        btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
 
+        btnLimpiar.setBackground(new java.awt.Color(51, 153, 255));
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("Limpiar");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -352,16 +367,23 @@ public class Application extends javax.swing.JFrame {
 
         jLabel14.setText("Perfil");
 
+        cmbPerfilEditar.setBackground(new java.awt.Color(51, 153, 255));
         cmbPerfilEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
 
+        btnModificar.setBackground(new java.awt.Color(51, 153, 255));
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setText("Modificar");
 
         jLabel15.setText("Password");
 
         jLabel16.setText("UserName");
 
+        btnBuscarEditar.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscarEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarEditar.setText("Buscar");
 
         jLabel17.setText("RUT");
@@ -385,7 +407,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(txtNombreEditar)
                     .addComponent(txtApellidosEditar)
                     .addComponent(txtDireccionEditar)
-                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                     .addComponent(txtRutEditarBuscar))
                 .addGap(92, 92, 92)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +477,7 @@ public class Application extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Editar Usuario", jPanel4);
@@ -482,12 +504,11 @@ public class Application extends javax.swing.JFrame {
         PerfilController perfilController = new PerfilController();
         String nombrePerfil = cmbPerfilBuscar.getSelectedItem().toString();
         Perfil perfil = perfilController.buscarPorNombre(nombrePerfil);
-       
+
         UsuarioController userController = new UsuarioController();
         ArrayList<Usuario> usuarios = userController.listarPorPerfil(perfil);
         cargarTablaUsuarios(usuarios);
-        
-        
+
     }//GEN-LAST:event_btnBuscarPorPerfilActionPerformed
 
     /**
@@ -545,8 +566,8 @@ public class Application extends javax.swing.JFrame {
         ArrayList<Usuario> usuarios = userController.listarTodos();
         cargarTablaUsuarios(usuarios);
     }
-    
-    public void cargarTablaUsuarios(ArrayList<Usuario> usuarios){
+
+    public void cargarTablaUsuarios(ArrayList<Usuario> usuarios) {
         limpiarTabla();
         if (!usuarios.isEmpty()) {
             for (Usuario usuario : usuarios) {
@@ -557,13 +578,13 @@ public class Application extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No existen usuarios registrados");
         }
     }
-    
-    public void limpiarTabla(){
+
+    public void limpiarTabla() {
         int filas = dtm.getRowCount();
         for (int i = 0; i < filas; i++) {
             dtm.removeRow(0);
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
