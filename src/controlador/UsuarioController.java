@@ -106,7 +106,7 @@ public class UsuarioController {
     }
 
     public Usuario buscarPorRut(String rut) {
-        Usuario dto = new Usuario();
+        Usuario dto = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM usuario where rut = ?";
@@ -117,7 +117,7 @@ public class UsuarioController {
             Perfil perfil = new Perfil();
 
             if (rs.next()) {
-
+                dto = new Usuario();
                 dto.setId(rs.getInt("id"));
                 dto.setNombre(rs.getString("nombre"));
                 dto.setApellidoPaterno(rs.getString("apellidopaterno"));

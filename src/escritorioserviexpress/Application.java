@@ -91,7 +91,6 @@ public class Application extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tabla.setBackground(new java.awt.Color(153, 204, 255));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -133,6 +132,11 @@ public class Application extends javax.swing.JFrame {
         btnBuscarPorRut.setBackground(new java.awt.Color(51, 153, 255));
         btnBuscarPorRut.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarPorRut.setText("Buscar");
+        btnBuscarPorRut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorRutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -246,7 +250,6 @@ public class Application extends javax.swing.JFrame {
         jTabbedPane1.addTab("Listar Usuarios", jPanel2);
 
         cmbPerfil.setBackground(new java.awt.Color(51, 153, 255));
-        cmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("RUT");
 
@@ -511,6 +514,23 @@ public class Application extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnBuscarPorPerfilActionPerformed
 
+    private void btnBuscarPorRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorRutActionPerformed
+        UsuarioController userController = new UsuarioController();
+        String rut = txtBuscarRut.getText().trim();
+        if(rut.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un rut");
+        }else{
+            Usuario user = userController.buscarPorRut(rut);
+            if(user==null){
+                JOptionPane.showMessageDialog(this, "Usuario no registrado");
+            }else{
+                ArrayList<Usuario> usuarios = new ArrayList<>();
+                usuarios.add(user);
+                cargarTablaUsuarios(usuarios);
+            }
+        }
+    }//GEN-LAST:event_btnBuscarPorRutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -557,6 +577,7 @@ public class Application extends javax.swing.JFrame {
         for (Perfil perfil : perfiles) {
 
             cmbPerfilBuscar.addItem(perfil.getDetallePerfil());
+            cmbPerfil.addItem(perfil.getDetallePerfil());
         }
 
     }
