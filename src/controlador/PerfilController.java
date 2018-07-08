@@ -78,7 +78,7 @@ public class PerfilController {
         
         try {
             Connection conexion = Conexion.getConexion();
-            String query = "SELECT * FROM PERFIL where DETALLEERFIL=?";
+            String query = "SELECT * FROM PERFIL where DETALLEPERFIL=?";
             PreparedStatement buscar = conexion.prepareStatement(query);
             buscar.setString(1, nombre);
             ResultSet rs = buscar.executeQuery();

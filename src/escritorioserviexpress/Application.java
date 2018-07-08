@@ -163,6 +163,11 @@ public class Application extends javax.swing.JFrame {
         jLabel19.setText("Perfil");
 
         btnBuscarPorPerfil.setText("Buscar");
+        btnBuscarPorPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPorPerfilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -473,6 +478,18 @@ public class Application extends javax.swing.JFrame {
         listarTodos();
     }//GEN-LAST:event_btnListarTodosActionPerformed
 
+    private void btnBuscarPorPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorPerfilActionPerformed
+        PerfilController perfilController = new PerfilController();
+        String nombrePerfil = cmbPerfilBuscar.getSelectedItem().toString();
+        Perfil perfil = perfilController.buscarPorNombre(nombrePerfil);
+       
+        UsuarioController userController = new UsuarioController();
+        ArrayList<Usuario> usuarios = userController.listarPorPerfil(perfil);
+        cargarTablaUsuarios(usuarios);
+        
+        
+    }//GEN-LAST:event_btnBuscarPorPerfilActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -526,7 +543,12 @@ public class Application extends javax.swing.JFrame {
     public void listarTodos() {
         UsuarioController userController = new UsuarioController();
         ArrayList<Usuario> usuarios = userController.listarTodos();
-        if (usuarios != null) {
+        cargarTablaUsuarios(usuarios);
+    }
+    
+    public void cargarTablaUsuarios(ArrayList<Usuario> usuarios){
+        limpiarTabla();
+        if (!usuarios.isEmpty()) {
             for (Usuario usuario : usuarios) {
                 dtm.addRow(new Object[]{usuario.getRut(), usuario.getNombre() + " " + usuario.getApellidoPaterno(),
                     usuario.getPerfil().getDetallePerfil(), usuario.getContactoTelefonico()});
@@ -534,6 +556,14 @@ public class Application extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "No existen usuarios registrados");
         }
+    }
+    
+    public void limpiarTabla(){
+        int filas = dtm.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            dtm.removeRow(0);
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
