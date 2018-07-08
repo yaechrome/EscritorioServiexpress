@@ -258,6 +258,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Listar Todos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListarTodosActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

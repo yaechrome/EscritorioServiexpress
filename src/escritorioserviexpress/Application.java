@@ -1,12 +1,15 @@
 package escritorioserviexpress;
 
 import controlador.PerfilController;
+import controlador.UsuarioController;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Perfil;
+import modelo.Usuario;
 
 public class Application extends javax.swing.JFrame {
-
+    DefaultTableModel dtm = new DefaultTableModel();
     /**
      * Creates new form test
      */
@@ -14,6 +17,10 @@ public class Application extends javax.swing.JFrame {
         
         initComponents();
         cargarCmb();
+        String[] titulo = new String[]{"RUT","Nombre","Perfil","Contacto"};
+        dtm.setColumnIdentifiers(titulo);
+        tabla.setModel(dtm);
+        listarTodos();
     }
 
     /**
@@ -180,6 +187,11 @@ public class Application extends javax.swing.JFrame {
         );
 
         btnListarTodos.setText("Listar Todos");
+        btnListarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarTodosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -455,6 +467,10 @@ public class Application extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnListarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarTodosActionPerformed
+        listarTodos();
+    }//GEN-LAST:event_btnListarTodosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -506,7 +522,16 @@ public class Application extends javax.swing.JFrame {
     }
     
     public void listarTodos(){
-        
+        UsuarioController userController = new UsuarioController();
+        ArrayList<Usuario> usuarios = userController.ListarTodos();
+        if(usuarios != null){
+            for (Usuario usuario : usuarios) {
+            dtm.addRow(new Object[]{usuario.getRut(), usuario.getNombre() + " " + usuario.getApellidoPaterno(), 
+                    usuario.getPerfil().getDetallePerfil(), usuario.getContactoTelefonico()});
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "No existen usuarios registrados");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
