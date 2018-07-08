@@ -270,10 +270,20 @@ public class Application extends javax.swing.JFrame {
         btnGuardar.setBackground(new java.awt.Color(51, 153, 255));
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setBackground(new java.awt.Color(51, 153, 255));
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -531,6 +541,66 @@ public class Application extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarPorRutActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        limpiarCrear();
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String rut = txtRut.getText();
+        String apellidos = txtApellidos.getText();
+        String nombre = txtNombre.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String username = txtUserName.getText();
+        String password = txtPassword.getText();
+        String per = cmbPerfil.getSelectedItem().toString();
+        Usuario usuario = null;
+        
+        if(rut.isEmpty() || apellidos.isEmpty() ||nombre.isEmpty() ||direccion.isEmpty()
+               || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+        }else{
+            UsuarioController userC = new UsuarioController();
+            usuario = userC.buscarPorRut(rut);
+            if(usuario!=null){
+                JOptionPane.showMessageDialog(this, "rut de usuario ya registrado");
+                txtRut.setText("");
+            }else{
+                PerfilController perfilC = new PerfilController();
+                Perfil perfil  = perfilC.buscarPorNombre(per);
+                usuario = new Usuario();
+                usuario.setPerfil(perfil);
+                usuario.setRut(rut);
+                usuario.setNombre(nombre);
+                usuario.setApellidoPaterno(apellidos);
+                usuario.setDireccion(direccion);
+                usuario.setContactoTelefonico(telefono);
+                usuario.setUsername(username);
+                usuario.setPassword(password);
+                
+                if(userC.crear(usuario)){
+                    JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
+                }else{
+                    
+                    JOptionPane.showMessageDialog(this, "No se pudo crear ususario");
+                }
+                limpiarCrear();
+            }
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    public void limpiarCrear(){
+        txtRut.setText("");
+        txtApellidos.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtUserName.setText("");
+        txtPassword.setText("");
+        cmbPerfil.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */

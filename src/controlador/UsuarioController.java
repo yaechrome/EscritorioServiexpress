@@ -16,7 +16,7 @@ public class UsuarioController {
 
             Connection conexion = Conexion.getConexion();
 
-            String query = "INSERT INTO usuarios ( nombre, apellidopaterno, rut, direccion, contactotelefonico, perfil, username, password) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO usuario ( nombre, apellidopaterno, rut, direccion, contactotelefonico, perfil, username, password) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement insertar = conexion.prepareStatement(query);
 
@@ -46,7 +46,7 @@ public class UsuarioController {
 
             Connection conexion = Conexion.getConexion();
 
-            String query = "update Usuarios set nombre=?, apellidopaterno=?, rut=?, direccion=?, contactotelefonico=?, perfil=?, username=?, password =? where id=?";
+            String query = "update Usuario set nombre=?, apellidopaterno=?, rut=?, direccion=?, contactotelefonico=?, perfil=?, username=?, password =? where id=?";
 
             PreparedStatement modificar = conexion.prepareStatement(query);
 
