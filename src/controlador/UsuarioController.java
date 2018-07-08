@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import modelo.Perfil;
 import modelo.Usuario;
 
@@ -71,8 +71,8 @@ public class UsuarioController {
         return false;
     }
 
-    public List<Usuario> ListarTodos() {
-        List<Usuario> usuarios = null;
+    public ArrayList<Usuario> ListarTodos() {
+        ArrayList<Usuario> usuarios = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM usuario";
@@ -106,13 +106,41 @@ public class UsuarioController {
     }
 
     public Usuario buscarPorRut(String rut) {
-        Usuario usuario = null;
+        Usuario dto = new Usuario();
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM usuario where rut = ?";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.setString(1, rut);
+            ResultSet rs = buscar.executeQuery();
+            PerfilController perfilController = new PerfilController();
+            Perfil perfil = new Perfil();
 
-        return usuario;
+            if (rs.next()) {
+
+                dto.setId(rs.getInt("id"));
+                dto.setNombre(rs.getString("nombre"));
+                dto.setApellidoPaterno(rs.getString("apellidopaterno"));
+                dto.setRut(rs.getString("rut"));
+                dto.setDireccion(rs.getString("direccion"));
+                dto.setContactoTelefonico(rs.getString("contactotelefonico"));
+                perfil = perfilController.buscarPorID(rs.getInt("perfil"));
+                dto.setPerfil(perfil);
+                dto.setUsername(rs.getString("username"));
+                dto.setPassword(rs.getString("password"));
+            }
+            buscar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error SQL al buscar " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }
+        return dto;
     }
 
-    public List<Usuario> ListarPorPerfil(int id) {
-        List<Usuario> usuarios = null;
-        return usuarios;
+    public ArrayList<Usuario> ListarPorPerfil(int id) {
+        return null;
     }
 }
