@@ -21,13 +21,12 @@ import modelo.Perfil;
 public class PerfilController {
     
     public ArrayList<Perfil> listarPerfiles(){
-        ArrayList<Perfil> perfiles = null;
+        ArrayList<Perfil> perfiles = new ArrayList<>();
         
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM PERFIL";
             PreparedStatement buscar = conexion.prepareStatement(query);
-            perfiles = new ArrayList<Perfil>();
             ResultSet rs = buscar.executeQuery();
 
             while (rs.next()) {

@@ -1,13 +1,19 @@
 package escritorioserviexpress;
 
+import controlador.PerfilController;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelo.Perfil;
+
 public class Application extends javax.swing.JFrame {
 
     /**
      * Creates new form test
      */
     public Application() {
-        cargarCmb();
+        
         initComponents();
+        cargarCmb();
     }
 
     /**
@@ -146,8 +152,6 @@ public class Application extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Por Perfil"));
 
         jLabel19.setText("Perfil");
-
-        cmbPerfilBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnBuscarPorPerfil.setText("Buscar");
 
@@ -492,7 +496,13 @@ public class Application extends javax.swing.JFrame {
 
     public void cargarCmb() {
 
-        //List<Perfil> perfiles =  perfilServices.listarPerfiles();
+        PerfilController perfilController = new PerfilController();
+        ArrayList<Perfil> perfiles =  perfilController.listarPerfiles();
+        for (Perfil perfil : perfiles) {
+            
+            cmbPerfilBuscar.addItem(perfil.getDetallePerfil());
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

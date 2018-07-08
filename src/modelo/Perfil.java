@@ -31,6 +31,13 @@ public class Perfil {
     public void setDetallePerfil(String detallePerfil) {
         this.detallePerfil = detallePerfil;
     }
+
+    @Override
+    public String toString() {
+        return this.detallePerfil + "(" + this.id + ")";
+    }
+
+    
     
     
 }
