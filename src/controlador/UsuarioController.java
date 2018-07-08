@@ -140,17 +140,14 @@ public class UsuarioController {
         return dto;
     }
 
-    public ArrayList<Usuario> listarPorPerfil(int id) {
+    public ArrayList<Usuario> listarPorPerfil(Perfil perfil) {
         ArrayList<Usuario> lista = new ArrayList<Usuario>();
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM usuario where perfil=?";
             PreparedStatement buscar = conexion.prepareStatement(query);
-            buscar.setInt(1, id);
+            buscar.setInt(1, perfil.getId());
             ResultSet rs = buscar.executeQuery();
-
-            PerfilController perfilController = new PerfilController();
-            Perfil perfil = perfilController.buscarPorID(id);
 
             while (rs.next()) {
                 Usuario dto = new Usuario();
