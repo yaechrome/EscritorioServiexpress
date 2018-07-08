@@ -9,15 +9,17 @@ import modelo.Perfil;
 import modelo.Usuario;
 
 public class Application extends javax.swing.JFrame {
+
     DefaultTableModel dtm = new DefaultTableModel();
+
     /**
      * Creates new form test
      */
     public Application() {
-        
+
         initComponents();
         cargarCmb();
-        String[] titulo = new String[]{"RUT","Nombre","Perfil","Contacto"};
+        String[] titulo = new String[]{"RUT", "Nombre", "Perfil", "Contacto"};
         dtm.setColumnIdentifiers(titulo);
         tabla.setModel(dtm);
         listarTodos();
@@ -513,23 +515,23 @@ public class Application extends javax.swing.JFrame {
     public void cargarCmb() {
 
         PerfilController perfilController = new PerfilController();
-        ArrayList<Perfil> perfiles =  perfilController.listarPerfiles();
+        ArrayList<Perfil> perfiles = perfilController.listarPerfiles();
         for (Perfil perfil : perfiles) {
-            
+
             cmbPerfilBuscar.addItem(perfil.getDetallePerfil());
         }
-        
+
     }
-    
-    public void listarTodos(){
+
+    public void listarTodos() {
         UsuarioController userController = new UsuarioController();
-        ArrayList<Usuario> usuarios = userController.ListarTodos();
-        if(usuarios != null){
+        ArrayList<Usuario> usuarios = userController.listarTodos();
+        if (usuarios != null) {
             for (Usuario usuario : usuarios) {
-            dtm.addRow(new Object[]{usuario.getRut(), usuario.getNombre() + " " + usuario.getApellidoPaterno(), 
+                dtm.addRow(new Object[]{usuario.getRut(), usuario.getNombre() + " " + usuario.getApellidoPaterno(),
                     usuario.getPerfil().getDetallePerfil(), usuario.getContactoTelefonico()});
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "No existen usuarios registrados");
         }
     }

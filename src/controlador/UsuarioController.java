@@ -72,7 +72,7 @@ public class UsuarioController {
     }
 
     public ArrayList<Usuario> listarTodos() {
-        ArrayList<Usuario> usuarios = null;
+        ArrayList<Usuario> usuarios = new ArrayList<>();
         try {
             Connection conexion = Conexion.getConexion();
             String query = "SELECT * FROM usuario";
@@ -85,7 +85,7 @@ public class UsuarioController {
                 dto.setId(rs.getInt("id"));
                 dto.setNombre(rs.getString("nombre"));
                 dto.setApellidoPaterno(rs.getString("apellidopaterno"));
-                dto.setRut(rs.getString("pass_usuario"));
+                dto.setRut(rs.getString("rut"));
                 dto.setDireccion(rs.getString("direccion"));
 
                 dto.setContactoTelefonico(rs.getString("contactotelefonico"));
