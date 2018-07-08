@@ -11,7 +11,7 @@ import modelo.Usuario;
 
 public class UsuarioController {
 
-    public boolean Crear(Usuario usuario) {
+    public boolean crear(Usuario usuario) {
         try {
 
             Connection conexion = Conexion.getConexion();
@@ -40,7 +40,7 @@ public class UsuarioController {
         return false;
     }
 
-    public boolean Modificar(Usuario usuario) {
+    public boolean modificar(Usuario usuario) {
 
         try {
 
@@ -71,7 +71,7 @@ public class UsuarioController {
         return false;
     }
 
-    public ArrayList<Usuario> ListarTodos() {
+    public ArrayList<Usuario> listarTodos() {
         ArrayList<Usuario> usuarios = null;
         try {
             Connection conexion = Conexion.getConexion();
@@ -140,7 +140,39 @@ public class UsuarioController {
         return dto;
     }
 
-    public ArrayList<Usuario> ListarPorPerfil(int id) {
-        return null;
+    public ArrayList<Usuario> listarPorPerfil(int id) {
+        ArrayList<Usuario> lista = new ArrayList<Usuario>();
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM usuario where perfil=?";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.setInt(1, id);
+            ResultSet rs = buscar.executeQuery();
+
+            PerfilController perfilController = new PerfilController();
+            Perfil perfil = perfilController.buscarPorID(id);
+
+            while (rs.next()) {
+                Usuario dto = new Usuario();
+
+                dto.setId(rs.getInt("id"));
+                dto.setNombre(rs.getString("nombre"));
+                dto.setApellidoPaterno(rs.getString("apellidopaterno"));
+                dto.setRut(rs.getString("rut"));
+                dto.setDireccion(rs.getString("direccion"));
+                dto.setContactoTelefonico(rs.getString("contactotelefonico"));
+                dto.setPerfil(perfil);
+                dto.setUsername(rs.getString("username"));
+                dto.setPassword(rs.getString("password"));
+                lista.add(dto);
+            }
+            buscar.close();
+            conexion.close();
+        } catch (SQLException w) {
+            System.out.println("Error SQL al buscar " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }
+        return lista;
     }
 }
