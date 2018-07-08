@@ -381,15 +381,24 @@ public class Application extends javax.swing.JFrame {
         jLabel14.setText("Perfil");
 
         cmbPerfilEditar.setBackground(new java.awt.Color(51, 153, 255));
-        cmbPerfilEditar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnCancelar.setBackground(new java.awt.Color(51, 153, 255));
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setBackground(new java.awt.Color(51, 153, 255));
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Password");
 
@@ -398,6 +407,11 @@ public class Application extends javax.swing.JFrame {
         btnBuscarEditar.setBackground(new java.awt.Color(51, 153, 255));
         btnBuscarEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarEditar.setText("Buscar");
+        btnBuscarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEditarActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("RUT");
 
@@ -537,6 +551,7 @@ public class Application extends javax.swing.JFrame {
                 ArrayList<Usuario> usuarios = new ArrayList<>();
                 usuarios.add(user);
                 cargarTablaUsuarios(usuarios);
+                txtRut.setText("");
             }
         }
     }//GEN-LAST:event_btnBuscarPorRutActionPerformed
@@ -561,8 +576,8 @@ public class Application extends javax.swing.JFrame {
                || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
         }else{
-            UsuarioController userC = new UsuarioController();
-            usuario = userC.buscarPorRut(rut);
+            
+            usuario = buscarUsuario(rut);
             if(usuario!=null){
                 JOptionPane.showMessageDialog(this, "rut de usuario ya registrado");
                 txtRut.setText("");
@@ -579,6 +594,7 @@ public class Application extends javax.swing.JFrame {
                 usuario.setUsername(username);
                 usuario.setPassword(password);
                 
+                UsuarioController userC = new UsuarioController();
                 if(userC.crear(usuario)){
                     JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
                 }else{
@@ -591,6 +607,90 @@ public class Application extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarEditar();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnBuscarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEditarActionPerformed
+        String rut = txtRutEditarBuscar.getText().trim();
+        Usuario usuario = buscarUsuario(rut);
+        if(usuario== null){
+            JOptionPane.showMessageDialog(this, "Usuario no existe");
+        }else{
+            txtRutEditarBuscar.setText("");
+            txtRutEditar.setText(usuario.getRut());
+            txtApellidosEditar.setText(usuario.getApellidoPaterno());
+            txtNombreEditar.setText(usuario.getNombre());
+            txtDireccionEditar.setText(usuario.getDireccion());
+            txtTelefonoEditar.setText(usuario.getContactoTelefonico());
+            txtUserNameEditar.setText(usuario.getUsername());
+            txtPasswordEditar.setText(usuario.getPassword());
+            cmbPerfilEditar.setSelectedItem(usuario.getPerfil().getDetallePerfil());
+        }
+    }//GEN-LAST:event_btnBuscarEditarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        String rut = txtRutEditar.getText();
+        String apellidos = txtApellidosEditar.getText();
+        String nombre = txtNombreEditar.getText();
+        String direccion = txtDireccionEditar.getText();
+        String telefono = txtTelefonoEditar.getText();
+        String username = txtUserNameEditar.getText();
+        String password = txtPasswordEditar.getText();
+        String per = cmbPerfilEditar.getSelectedItem().toString();
+        Usuario usuario = null;
+        
+        if(rut.isEmpty() || apellidos.isEmpty() ||nombre.isEmpty() ||direccion.isEmpty()
+               || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+        }else{
+            usuario = buscarUsuario(rut);
+            if(usuario==null){
+                JOptionPane.showMessageDialog(this, "rut de usuario NO registrado");
+                
+            }else{
+                PerfilController perfilC = new PerfilController();
+                Perfil perfil  = perfilC.buscarPorNombre(per);
+                Usuario usuario2 = new Usuario();
+                usuario2.setId(usuario.getId());
+                usuario2.setPerfil(perfil);
+                usuario2.setRut(rut);
+                usuario2.setNombre(nombre);
+                usuario2.setApellidoPaterno(apellidos);
+                usuario2.setDireccion(direccion);
+                usuario2.setContactoTelefonico(telefono);
+                usuario2.setUsername(username);
+                usuario2.setPassword(password);
+                
+                UsuarioController userC = new UsuarioController();
+                if(userC.modificar(usuario2)){
+                    JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente");
+                    limpiarEditar();
+                }else{
+                    
+                    JOptionPane.showMessageDialog(this, "No se pudo modificar usuario");
+                }
+                limpiarCrear();
+            }
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    public Usuario buscarUsuario(String rut){
+        UsuarioController userC = new UsuarioController();
+        Usuario usuario = userC.buscarPorRut(rut);
+        return usuario;
+    }
+    public void limpiarEditar(){
+        txtRutEditarBuscar.setText("");
+        txtRutEditar.setText("");
+        txtApellidosEditar.setText("");
+        txtNombreEditar.setText("");
+        txtDireccionEditar.setText("");
+        txtTelefonoEditar.setText("");
+        txtUserNameEditar.setText("");
+        txtPasswordEditar.setText("");
+        cmbPerfilEditar.setSelectedIndex(0);
+    }
     public void limpiarCrear(){
         txtRut.setText("");
         txtApellidos.setText("");
@@ -648,6 +748,7 @@ public class Application extends javax.swing.JFrame {
 
             cmbPerfilBuscar.addItem(perfil.getDetallePerfil());
             cmbPerfil.addItem(perfil.getDetallePerfil());
+            cmbPerfilEditar.addItem(perfil.getDetallePerfil());
         }
 
     }
