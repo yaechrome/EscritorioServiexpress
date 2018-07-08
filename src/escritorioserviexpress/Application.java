@@ -504,6 +504,10 @@ public class Application extends javax.swing.JFrame {
         }
         
     }
+    
+    public void listarTodos(){
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarEditar;

@@ -72,4 +72,31 @@ public class PerfilController {
         
         return perfil;
     }
+    
+    public Perfil buscarPorNombre(String nombre){
+        Perfil perfil = null;
+        
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "SELECT * FROM PERFIL where DETALLEERFIL=?";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.setString(1, nombre);
+            ResultSet rs = buscar.executeQuery();
+
+            while (rs.next()) {
+                perfil = new Perfil();
+                perfil.setId(rs.getInt("ID"));
+                perfil.setDetallePerfil(rs.getString("DETALLEPERFIL"));
+
+            }
+            buscar.close();
+            conexion.close();
+        } catch (SQLException w) {
+            System.out.println("Error SQL al buscar " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error al buscar " + e.getMessage());
+        }
+        
+        return perfil;
+    }
 }
