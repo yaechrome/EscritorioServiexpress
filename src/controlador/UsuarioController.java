@@ -173,4 +173,29 @@ public class UsuarioController {
         }
         return lista;
     }
+    
+    public boolean existeUsername(String user){
+        boolean existe = false;
+        try {
+            
+            Connection conexion = Conexion.getConexion();
+            String query = "select * from usuario where username=?";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.setString(1, user);
+            buscar.execute();
+            ResultSet rs = buscar.executeQuery();
+            if (rs.next()) {
+                existe = true;
+            }
+            buscar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error  " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return existe;
+
+    }
 }
