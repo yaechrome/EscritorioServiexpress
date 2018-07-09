@@ -541,17 +541,18 @@ public class Application extends javax.swing.JFrame {
     private void btnBuscarPorRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorRutActionPerformed
         UsuarioController userController = new UsuarioController();
         String rut = txtBuscarRut.getText().trim();
-        if (rut.isEmpty()) {
+        if(rut.isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un rut");
-        } else {
+        }else{
             Usuario user = userController.buscarPorRut(rut);
-            if (user == null) {
+            if(user==null){
                 JOptionPane.showMessageDialog(this, "Usuario no registrado");
-            } else {
+            }else{
                 ArrayList<Usuario> usuarios = new ArrayList<>();
                 usuarios.add(user);
-                cargarTablaUsuarios(usuarios);
                 txtRut.setText("");
+                cargarTablaUsuarios(usuarios);
+                
             }
         }
     }//GEN-LAST:event_btnBuscarPorRutActionPerformed
@@ -571,37 +572,43 @@ public class Application extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String per = cmbPerfil.getSelectedItem().toString();
         Usuario usuario = null;
-
-        if (rut.isEmpty() || apellidos.isEmpty() || nombre.isEmpty() || direccion.isEmpty()
-                || telefono.isEmpty() || username.isEmpty() || password.isEmpty()) {
+        
+        if(rut.isEmpty() || apellidos.isEmpty() ||nombre.isEmpty() ||direccion.isEmpty()
+               || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
-        } else {
-
+        }else{
+            
             usuario = buscarUsuario(rut);
-            if (usuario != null) {
+            if(usuario!=null){
                 JOptionPane.showMessageDialog(this, "rut de usuario ya registrado");
-                txtRut.setText("");
-            } else {
-                PerfilController perfilC = new PerfilController();
-                Perfil perfil = perfilC.buscarPorNombre(per);
-                usuario = new Usuario();
-                usuario.setPerfil(perfil);
-                usuario.setRut(rut);
-                usuario.setNombre(nombre);
-                usuario.setApellidoPaterno(apellidos);
-                usuario.setDireccion(direccion);
-                usuario.setContactoTelefonico(telefono);
-                usuario.setUsername(username);
-                usuario.setPassword(password);
-
+                
+            }else{
                 UsuarioController userC = new UsuarioController();
-                if (userC.crear(usuario)) {
-                    JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
-                } else {
+                if(userC.existeUsername(username)){
+                    JOptionPane.showMessageDialog(this, "Username no disponible");
+                }else{
+                    txtRut.setText("");
+                    PerfilController perfilC = new PerfilController();
+                    Perfil perfil  = perfilC.buscarPorNombre(per);
+                    usuario = new Usuario();
+                    usuario.setPerfil(perfil);
+                    usuario.setRut(rut);
+                    usuario.setNombre(nombre);
+                    usuario.setApellidoPaterno(apellidos);
+                    usuario.setDireccion(direccion);
+                    usuario.setContactoTelefonico(telefono);
+                    usuario.setUsername(username);
+                    usuario.setPassword(password);
 
-                    JOptionPane.showMessageDialog(this, "No se pudo crear ususario");
+
+                    if(userC.crear(usuario)){
+                        JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
+                    }else{
+
+                        JOptionPane.showMessageDialog(this, "No se pudo crear ususario");
+                    }
+                    limpiarCrear();
                 }
-                limpiarCrear();
             }
         }
 
@@ -649,28 +656,35 @@ public class Application extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "rut de usuario NO registrado");
 
             } else {
-                PerfilController perfilC = new PerfilController();
-                Perfil perfil = perfilC.buscarPorNombre(per);
-                Usuario usuario2 = new Usuario();
-                usuario2.setId(usuario.getId());
-                usuario2.setPerfil(perfil);
-                usuario2.setRut(rut);
-                usuario2.setNombre(nombre);
-                usuario2.setApellidoPaterno(apellidos);
-                usuario2.setDireccion(direccion);
-                usuario2.setContactoTelefonico(telefono);
-                usuario2.setUsername(username);
-                usuario2.setPassword(password);
-
                 UsuarioController userC = new UsuarioController();
-                if (userC.modificar(usuario2)) {
-                    JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente");
-                    limpiarEditar();
-                } else {
+                
+                if(userC.existeUsername(username) && !usuario.getUsername().equals(username)){
+                    JOptionPane.showMessageDialog(this, "Username no disponible");
+                }else{
+                    
+                    PerfilController perfilC = new PerfilController();
+                    Perfil perfil = perfilC.buscarPorNombre(per);
+                    Usuario usuario2 = new Usuario();
+                    usuario2.setId(usuario.getId());
+                    usuario2.setPerfil(perfil);
+                    usuario2.setRut(rut);
+                    usuario2.setNombre(nombre);
+                    usuario2.setApellidoPaterno(apellidos);
+                    usuario2.setDireccion(direccion);
+                    usuario2.setContactoTelefonico(telefono);
+                    usuario2.setUsername(username);
+                    usuario2.setPassword(password);
 
-                    JOptionPane.showMessageDialog(this, "No se pudo modificar usuario");
+
+                    if (userC.modificar(usuario2)) {
+                        JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente");
+                        limpiarEditar();
+                    } else {
+
+                        JOptionPane.showMessageDialog(this, "No se pudo modificar usuario");
+                    }
+                    limpiarCrear();
                 }
-                limpiarCrear();
             }
         }
     }//GEN-LAST:event_btnModificarActionPerformed
