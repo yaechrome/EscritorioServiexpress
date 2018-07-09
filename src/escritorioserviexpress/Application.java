@@ -304,7 +304,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnGuardar)
@@ -317,10 +317,10 @@ public class Application extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(90, 90, 90))
+                            .addComponent(cmbPerfil, 0, 127, Short.MAX_VALUE)
+                            .addComponent(txtUserName)
+                            .addComponent(txtPassword))))
+                .addGap(80, 80, 80))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -434,7 +434,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(txtNombreEditar)
                     .addComponent(txtApellidosEditar)
                     .addComponent(txtDireccionEditar)
-                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                     .addComponent(txtRutEditarBuscar))
                 .addGap(92, 92, 92)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -442,19 +442,19 @@ public class Application extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(btnModificar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                             .addComponent(btnCancelar))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel14)
                                 .addComponent(jLabel16)
                                 .addComponent(jLabel15))
-                            .addGap(67, 67, 67)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtPasswordEditar)
-                                .addComponent(cmbPerfilEditar, 0, 81, Short.MAX_VALUE)
-                                .addComponent(txtUserNameEditar)))))
-                .addGap(96, 96, 96))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmbPerfilEditar, 0, 129, Short.MAX_VALUE)
+                                .addComponent(txtUserNameEditar)
+                                .addComponent(txtPasswordEditar)))))
+                .addGap(84, 84, 84))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,13 +541,13 @@ public class Application extends javax.swing.JFrame {
     private void btnBuscarPorRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorRutActionPerformed
         UsuarioController userController = new UsuarioController();
         String rut = txtBuscarRut.getText().trim();
-        if(rut.isEmpty()){
+        if (rut.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un rut");
-        }else{
+        } else {
             Usuario user = userController.buscarPorRut(rut);
-            if(user==null){
+            if (user == null) {
                 JOptionPane.showMessageDialog(this, "Usuario no registrado");
-            }else{
+            } else {
                 ArrayList<Usuario> usuarios = new ArrayList<>();
                 usuarios.add(user);
                 cargarTablaUsuarios(usuarios);
@@ -558,7 +558,7 @@ public class Application extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarCrear();
-        
+
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -571,19 +571,19 @@ public class Application extends javax.swing.JFrame {
         String password = txtPassword.getText();
         String per = cmbPerfil.getSelectedItem().toString();
         Usuario usuario = null;
-        
-        if(rut.isEmpty() || apellidos.isEmpty() ||nombre.isEmpty() ||direccion.isEmpty()
-               || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
+
+        if (rut.isEmpty() || apellidos.isEmpty() || nombre.isEmpty() || direccion.isEmpty()
+                || telefono.isEmpty() || username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
-        }else{
-            
+        } else {
+
             usuario = buscarUsuario(rut);
-            if(usuario!=null){
+            if (usuario != null) {
                 JOptionPane.showMessageDialog(this, "rut de usuario ya registrado");
                 txtRut.setText("");
-            }else{
+            } else {
                 PerfilController perfilC = new PerfilController();
-                Perfil perfil  = perfilC.buscarPorNombre(per);
+                Perfil perfil = perfilC.buscarPorNombre(per);
                 usuario = new Usuario();
                 usuario.setPerfil(perfil);
                 usuario.setRut(rut);
@@ -593,18 +593,18 @@ public class Application extends javax.swing.JFrame {
                 usuario.setContactoTelefonico(telefono);
                 usuario.setUsername(username);
                 usuario.setPassword(password);
-                
+
                 UsuarioController userC = new UsuarioController();
-                if(userC.crear(usuario)){
+                if (userC.crear(usuario)) {
                     JOptionPane.showMessageDialog(this, "Usuario creado exitosamente");
-                }else{
-                    
+                } else {
+
                     JOptionPane.showMessageDialog(this, "No se pudo crear ususario");
                 }
                 limpiarCrear();
             }
         }
-        
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -614,9 +614,9 @@ public class Application extends javax.swing.JFrame {
     private void btnBuscarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEditarActionPerformed
         String rut = txtRutEditarBuscar.getText().trim();
         Usuario usuario = buscarUsuario(rut);
-        if(usuario== null){
+        if (usuario == null) {
             JOptionPane.showMessageDialog(this, "Usuario no existe");
-        }else{
+        } else {
             txtRutEditarBuscar.setText("");
             txtRutEditar.setText(usuario.getRut());
             txtApellidosEditar.setText(usuario.getApellidoPaterno());
@@ -639,18 +639,18 @@ public class Application extends javax.swing.JFrame {
         String password = txtPasswordEditar.getText();
         String per = cmbPerfilEditar.getSelectedItem().toString();
         Usuario usuario = null;
-        
-        if(rut.isEmpty() || apellidos.isEmpty() ||nombre.isEmpty() ||direccion.isEmpty()
-               || telefono.isEmpty() || username.isEmpty() || password.isEmpty()){
+
+        if (rut.isEmpty() || apellidos.isEmpty() || nombre.isEmpty() || direccion.isEmpty()
+                || telefono.isEmpty() || username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
-        }else{
+        } else {
             usuario = buscarUsuario(rut);
-            if(usuario==null){
+            if (usuario == null) {
                 JOptionPane.showMessageDialog(this, "rut de usuario NO registrado");
-                
-            }else{
+
+            } else {
                 PerfilController perfilC = new PerfilController();
-                Perfil perfil  = perfilC.buscarPorNombre(per);
+                Perfil perfil = perfilC.buscarPorNombre(per);
                 Usuario usuario2 = new Usuario();
                 usuario2.setId(usuario.getId());
                 usuario2.setPerfil(perfil);
@@ -661,13 +661,13 @@ public class Application extends javax.swing.JFrame {
                 usuario2.setContactoTelefonico(telefono);
                 usuario2.setUsername(username);
                 usuario2.setPassword(password);
-                
+
                 UsuarioController userC = new UsuarioController();
-                if(userC.modificar(usuario2)){
+                if (userC.modificar(usuario2)) {
                     JOptionPane.showMessageDialog(this, "Usuario modificado exitosamente");
                     limpiarEditar();
-                }else{
-                    
+                } else {
+
                     JOptionPane.showMessageDialog(this, "No se pudo modificar usuario");
                 }
                 limpiarCrear();
@@ -675,12 +675,13 @@ public class Application extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    public Usuario buscarUsuario(String rut){
+    public Usuario buscarUsuario(String rut) {
         UsuarioController userC = new UsuarioController();
         Usuario usuario = userC.buscarPorRut(rut);
         return usuario;
     }
-    public void limpiarEditar(){
+
+    public void limpiarEditar() {
         txtRutEditarBuscar.setText("");
         txtRutEditar.setText("");
         txtApellidosEditar.setText("");
@@ -691,7 +692,8 @@ public class Application extends javax.swing.JFrame {
         txtPasswordEditar.setText("");
         cmbPerfilEditar.setSelectedIndex(0);
     }
-    public void limpiarCrear(){
+
+    public void limpiarCrear() {
         txtRut.setText("");
         txtApellidos.setText("");
         txtNombre.setText("");
@@ -701,6 +703,7 @@ public class Application extends javax.swing.JFrame {
         txtPassword.setText("");
         cmbPerfil.setSelectedIndex(0);
     }
+
     /**
      * @param args the command line arguments
      */
