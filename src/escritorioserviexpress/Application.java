@@ -1,12 +1,13 @@
 package escritorioserviexpress;
 
-import controlador.PerfilController;
-import controlador.UsuarioController;
+import controlador.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelo.Perfil;
-import modelo.Usuario;
+import modelo.*;
 
 public class Application extends javax.swing.JFrame {
 
@@ -95,16 +96,17 @@ public class Application extends javax.swing.JFrame {
         btnBuscarEmpleado = new javax.swing.JButton();
         lblId = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        txtApellidosEditar1 = new javax.swing.JTextField();
+        txtFechaContratacion = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        txtDireccionEditar1 = new javax.swing.JTextField();
+        txtSueldo = new javax.swing.JTextField();
         btnModificar1 = new javax.swing.JButton();
         btnCancelar1 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        txtDireccionEditar2 = new javax.swing.JTextField();
+        txtCargo = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtObs = new javax.swing.JTextArea();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -567,9 +569,11 @@ public class Application extends javax.swing.JFrame {
 
         jLabel26.setText("Observaciones");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtObs.setColumns(20);
+        txtObs.setRows(5);
+        jScrollPane2.setViewportView(txtObs);
+
+        jLabel20.setText("\"yyyy-mm-dd\"");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -594,12 +598,17 @@ public class Application extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtApellidosEditar1)
+                            .addComponent(txtFechaContratacion)
                             .addComponent(txtRutEmpleadoBuscar, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDireccionEditar1)
-                            .addComponent(txtDireccionEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(109, 109, 109)
-                        .addComponent(btnBuscarEmpleado))
+                            .addComponent(txtSueldo)
+                            .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel20))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(btnBuscarEmpleado))))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblId))
                 .addGap(56, 56, 56))
@@ -607,29 +616,30 @@ public class Application extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBuscarEmpleado)
-                            .addComponent(jLabel21))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblNombre)
                         .addGap(27, 27, 27)
                         .addComponent(jLabel23))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(txtRutEmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtRutEmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21)
+                            .addComponent(btnBuscarEmpleado))
                         .addGap(18, 18, 18)
                         .addComponent(lblId)
                         .addGap(18, 18, 18)
-                        .addComponent(txtApellidosEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaContratacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20))))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccionEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDireccionEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -638,7 +648,7 @@ public class Application extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCancelar1)
                             .addComponent(btnModificar1))
@@ -840,21 +850,92 @@ public class Application extends javax.swing.JFrame {
             if(tipoUsuario.equals("Cliente") || tipoUsuario.equals("Proveedor")){
                 JOptionPane.showMessageDialog(this, "Rut no pertenece a un empleado");
             }else{
+                
+                
                 String id = ""+usuario.getId();
                 lblId.setText(id);
                 lblNombre.setText(usuario.getNombre().toString());
                 
+                DatosEmpleadoController deC = new DatosEmpleadoController();
+                
+                DatosEmpleado datos = deC.buscarDatosEmpleado(usuario.getId());
+                
+                if(datos==null){
+                    limpiarDatosEmpleado();
+                }else{
+                    txtRutEmpleadoBuscar.setText("");
+                    txtFechaContratacion.setText(datos.getFechaContratacion().toString());
+                    txtSueldo.setText(""+datos.getSueldo());
+                    txtCargo.setText(datos.getCargo());
+                    txtObs.setText(datos.getObservacion());
+                }
+
             }
         
         }
     }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
 
     private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
-        // TODO add your handling code here:
+        try {
+            DatosEmpleadoController deC = new DatosEmpleadoController();
+            int id = Integer.parseInt(lblId.getText());
+            DatosEmpleado datos = deC.buscarDatosEmpleado(id);
+            Usuario usuario = new Usuario();
+            usuario.setId(id);
+            String fecha = txtFechaContratacion.getText().trim();
+            String sueldo = txtSueldo.getText().trim();
+            String cargo = txtCargo.getText().trim();
+            String obs = txtObs.getText().trim();
+                    
+            if(fecha.isEmpty() || sueldo.isEmpty() || cargo.isEmpty()){
+                JOptionPane.showMessageDialog(this, "Ingrese todos los datos");
+            }else{
+                int sueldo2 = Integer.parseInt(sueldo);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date fechaFormateada = formatter.parse(fecha);
+                
+                DatosEmpleado datos2 = new DatosEmpleado();
+                datos2.setFechaContratacion(fechaFormateada);
+                datos2.setSueldo(sueldo2);
+                datos2.setCargo(cargo);
+                datos2.setObservacion(obs);
+                datos2.setUsuario(usuario);
+                if(datos == null){
+                    
+                    if(deC.crear(datos2)){
+                        limpiarDatosEmpleado();
+                        lblId.setText("Id");
+                        lblNombre.setText("Nombre");
+                        JOptionPane.showMessageDialog(this, "Datos de empleado registrado correctamente");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No se pudo registrar Datos de empleado");
+                    }
+                    
+                }else{
+                    
+                    if(deC.modificar(datos2)){
+                        limpiarDatosEmpleado();
+                        lblId.setText("Id");
+                        lblNombre.setText("Nombre");
+                        JOptionPane.showMessageDialog(this, "Datos de empleado modificados correctamente");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "No se pudo modificar Datos de empleado");
+                    }
+                }
+            }
+        }catch(ParseException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Ingrese sólo dígitos en sueldo");
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnModificar1ActionPerformed
 
     private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
-        // TODO add your handling code here:
+        limpiarDatosEmpleado();
+        lblId.setText("Id");
+        lblNombre.setText("Nombre");
     }//GEN-LAST:event_btnCancelar1ActionPerformed
 
     public Usuario buscarUsuario(String rut) {
@@ -875,6 +956,15 @@ public class Application extends javax.swing.JFrame {
         cmbPerfilEditar.setSelectedIndex(0);
     }
 
+     public void limpiarDatosEmpleado() {
+        txtFechaContratacion.setText("");
+        txtSueldo.setText("");
+        txtCargo.setText("");
+        txtObs.setText("");
+        txtRutEmpleadoBuscar.setText("");
+       
+    }
+     
     public void limpiarCrear() {
         txtRut.setText("");
         txtApellidos.setText("");
@@ -991,6 +1081,7 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1012,26 +1103,26 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtApellidosEditar;
-    private javax.swing.JTextField txtApellidosEditar1;
     private javax.swing.JTextField txtBuscarRut;
+    private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionEditar;
-    private javax.swing.JTextField txtDireccionEditar1;
-    private javax.swing.JTextField txtDireccionEditar2;
+    private javax.swing.JTextField txtFechaContratacion;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreEditar;
+    private javax.swing.JTextArea txtObs;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtPasswordEditar;
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtRutEditar;
     private javax.swing.JTextField txtRutEditarBuscar;
     private javax.swing.JTextField txtRutEmpleadoBuscar;
+    private javax.swing.JTextField txtSueldo;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoEditar;
     private javax.swing.JTextField txtUserName;

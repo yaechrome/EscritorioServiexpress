@@ -784,13 +784,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtApellidosEditar1" max="32767" attributes="0"/>
+                                  <Component id="txtFechaContratacion" max="32767" attributes="0"/>
                                   <Component id="txtRutEmpleadoBuscar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtDireccionEditar1" max="32767" attributes="0"/>
-                                  <Component id="txtDireccionEditar2" min="-2" pref="149" max="-2" attributes="0"/>
+                                  <Component id="txtSueldo" max="32767" attributes="0"/>
+                                  <Component id="txtCargo" min="-2" pref="149" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="btnBuscarEmpleado" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                                      <Component id="btnBuscarEmpleado" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <Component id="jScrollPane2" min="-2" pref="386" max="-2" attributes="0"/>
                           <Component id="lblId" min="-2" max="-2" attributes="0"/>
@@ -802,34 +810,36 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnBuscarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="lblNombre" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="txtRutEmpleadoBuscar" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtRutEmpleadoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnBuscarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="lblId" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtApellidosEditar1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtFechaContratacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtDireccionEditar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSueldo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtDireccionEditar2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCargo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -840,7 +850,7 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jScrollPane2" min="-2" pref="68" max="-2" attributes="0"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="47" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnCancelar1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnModificar1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -889,14 +899,14 @@
                 <Property name="text" type="java.lang.String" value="Fecha de contrataci&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtApellidosEditar1">
+            <Component class="javax.swing.JTextField" name="txtFechaContratacion">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel24">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sueldo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDireccionEditar1">
+            <Component class="javax.swing.JTextField" name="txtSueldo">
             </Component>
             <Component class="javax.swing.JButton" name="btnModificar1">
               <Properties>
@@ -931,7 +941,7 @@
                 <Property name="text" type="java.lang.String" value="Cargo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDireccionEditar2">
+            <Component class="javax.swing.JTextField" name="txtCargo">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel26">
               <Properties>
@@ -945,7 +955,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="txtObs">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -953,6 +963,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel20">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&quot;yyyy-mm-dd&quot;"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
