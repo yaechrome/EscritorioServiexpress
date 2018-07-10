@@ -14,7 +14,7 @@ public class DatosEmpleadoController {
 
             Connection conexion = Conexion.getConexion();
 
-            String query = "INSERT INTO datos_empleados (usuario, fechacontratacion, sueldo, cargo, obsadministrativas) VALUES ( ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO datos_empleados (usuario, fechacontratacion, sueldo, cargo, obsadministrativas, id) VALUES ( ?, ?, ?, ?, ?,?)";
 
             PreparedStatement insertar = conexion.prepareStatement(query);
 
@@ -23,6 +23,7 @@ public class DatosEmpleadoController {
             insertar.setInt(3, datos.getSueldo());
             insertar.setString(4, datos.getCargo());
             insertar.setString(5, datos.getObservacion());
+            insertar.setInt(6, datos.getId());
             insertar.execute();
             insertar.close();
             conexion.close();
@@ -89,6 +90,28 @@ public class DatosEmpleadoController {
             System.out.println("Error " + e.getMessage());
         }
         return datos;
+    }
+
+    public int secuenciaId() {
+        int numero = 1;
+        try {
+            Connection conexion = Conexion.getConexion();
+            String query = "select max(id) \"id\" from datos_empleados";
+            PreparedStatement buscar = conexion.prepareStatement(query);
+            buscar.execute();
+            ResultSet rs = buscar.executeQuery();
+            if (rs.next()) {
+                numero = rs.getInt("id");
+            }
+            buscar.close();
+            conexion.close();
+
+        } catch (SQLException w) {
+            System.out.println("Error  " + w.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error " + e.getMessage());
+        }
+        return numero;
     }
 
 }
