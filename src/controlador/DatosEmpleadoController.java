@@ -30,19 +30,19 @@ public class DatosEmpleadoController {
         return validar;
     }
 
-    public DatosEmpleado buscarDatosEmpleado(Usuario usuario) {
+    public DatosEmpleado buscarDatosEmpleado(int idUsuario) {
         DatosEmpleado datos = null;
         try {
             Connection conexion = Conexion.getConexion();
             String query = "select * from datos_empleados where usuario=?";
             PreparedStatement buscar = conexion.prepareStatement(query);
-            buscar.setInt(1, usuario.getId());
+            buscar.setInt(1, idUsuario);
             buscar.execute();
             ResultSet rs = buscar.executeQuery();
             if (rs.next()) {
                 datos = new DatosEmpleado();
                 datos.setId(rs.getInt("id"));
-                datos.setUsuario(usuario);
+                datos.setUsuario(null);
                 datos.setFechaContratacion(rs.getDate("fechaContratacion"));
                 datos.setSueldo(rs.getInt("sueldo"));
                 datos.setCargo(rs.getString("cargo"));
