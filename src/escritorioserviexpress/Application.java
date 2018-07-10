@@ -88,6 +88,23 @@ public class Application extends javax.swing.JFrame {
         btnBuscarEditar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         txtRutEditarBuscar = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        lblNombre = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        txtRutEmpleadoBuscar = new javax.swing.JTextField();
+        btnBuscarEmpleado = new javax.swing.JButton();
+        lblId = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        txtApellidosEditar1 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtDireccionEditar1 = new javax.swing.JTextField();
+        btnModificar1 = new javax.swing.JButton();
+        btnCancelar1 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        txtDireccionEditar2 = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,7 +248,7 @@ public class Application extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(270, 270, 270)
                         .addComponent(btnListarTodos)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,7 +321,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtApellidos, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnGuardar)
@@ -434,7 +451,7 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(txtNombreEditar)
                     .addComponent(txtApellidosEditar)
                     .addComponent(txtDireccionEditar)
-                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                    .addComponent(txtTelefonoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(txtRutEditarBuscar))
                 .addGap(92, 92, 92)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,6 +525,127 @@ public class Application extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Editar Usuario", jPanel4);
+
+        lblNombre.setText("Nombre");
+
+        jLabel21.setText("RUT");
+
+        btnBuscarEmpleado.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarEmpleado.setText("Buscar");
+        btnBuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        lblId.setText("ID");
+
+        jLabel23.setText("Fecha de contratación");
+
+        jLabel24.setText("Sueldo");
+
+        btnModificar1.setBackground(new java.awt.Color(51, 153, 255));
+        btnModificar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar1.setText("Guardar");
+        btnModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificar1ActionPerformed(evt);
+            }
+        });
+
+        btnCancelar1.setBackground(new java.awt.Color(51, 153, 255));
+        btnCancelar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelar1ActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Cargo");
+
+        jLabel26.setText("Observaciones");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(btnModificar1)
+                .addGap(117, 117, 117)
+                .addComponent(btnCancelar1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26)
+                    .addComponent(lblNombre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtApellidosEditar1)
+                            .addComponent(txtRutEmpleadoBuscar, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDireccionEditar1)
+                            .addComponent(txtDireccionEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(109, 109, 109)
+                        .addComponent(btnBuscarEmpleado))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblId))
+                .addGap(56, 56, 56))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscarEmpleado)
+                            .addComponent(jLabel21))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblNombre)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(txtRutEmpleadoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblId)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtApellidosEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDireccionEditar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDireccionEditar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCancelar1)
+                            .addComponent(btnModificar1))
+                        .addGap(49, 49, 49))))
+        );
+
+        jTabbedPane1.addTab("Datos empleado", jPanel6);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -689,6 +827,36 @@ public class Application extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
+        String rut = txtRutEmpleadoBuscar.getText().trim();
+        Usuario usuario = buscarUsuario(rut);
+        
+        if(usuario==null){
+            JOptionPane.showMessageDialog(this, "No existe usuario");
+        }else{
+
+            String tipoUsuario = usuario.getPerfil().getDetallePerfil();
+
+            if(tipoUsuario.equals("Cliente") || tipoUsuario.equals("Proveedor")){
+                JOptionPane.showMessageDialog(this, "Rut no pertenece a un empleado");
+            }else{
+                String id = ""+usuario.getId();
+                lblId.setText(id);
+                lblNombre.setText(usuario.getNombre().toString());
+                
+            }
+        
+        }
+    }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
+
+    private void btnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificar1ActionPerformed
+
+    private void btnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar1ActionPerformed
+
     public Usuario buscarUsuario(String rut) {
         UsuarioController userC = new UsuarioController();
         Usuario usuario = userC.buscarPorRut(rut);
@@ -798,13 +966,16 @@ public class Application extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarEditar;
+    private javax.swing.JButton btnBuscarEmpleado;
     private javax.swing.JButton btnBuscarPorPerfil;
     private javax.swing.JButton btnBuscarPorRut;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnListarTodos;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnModificar1;
     private javax.swing.JComboBox<String> cmbPerfil;
     private javax.swing.JComboBox<String> cmbPerfilBuscar;
     private javax.swing.JComboBox<String> cmbPerfilEditar;
@@ -820,6 +991,11 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -832,14 +1008,22 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblId;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtApellidosEditar;
+    private javax.swing.JTextField txtApellidosEditar1;
     private javax.swing.JTextField txtBuscarRut;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtDireccionEditar;
+    private javax.swing.JTextField txtDireccionEditar1;
+    private javax.swing.JTextField txtDireccionEditar2;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreEditar;
     private javax.swing.JTextField txtPassword;
@@ -847,6 +1031,7 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtRutEditar;
     private javax.swing.JTextField txtRutEditarBuscar;
+    private javax.swing.JTextField txtRutEmpleadoBuscar;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtTelefonoEditar;
     private javax.swing.JTextField txtUserName;

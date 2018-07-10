@@ -6,8 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import modelo.Perfil;
-import modelo.Usuario;
+import modelo.*;
 
 public class UsuarioController {
 
@@ -196,6 +195,11 @@ public class UsuarioController {
             System.out.println("Error " + e.getMessage());
         }
         return existe;
-
+    }
+    
+    public DatosEmpleado buscarDatosEmpleado (int idUsuario){
+        
+        
+        
     }
 }
