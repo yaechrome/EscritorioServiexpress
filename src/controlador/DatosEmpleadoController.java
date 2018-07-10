@@ -17,13 +17,13 @@ public class DatosEmpleadoController {
             String query = "INSERT INTO datos_empleados (usuario, fechacontratacion, sueldo, cargo, obsadministrativas, id) VALUES ( ?, ?, ?, ?, ?,?)";
 
             PreparedStatement insertar = conexion.prepareStatement(query);
-
+            int id = secuenciaId();
             insertar.setInt(1, datos.getUsuario().getId());
             insertar.setDate(2, new java.sql.Date(datos.getFechaContratacion().getTime()));
             insertar.setInt(3, datos.getSueldo());
             insertar.setString(4, datos.getCargo());
             insertar.setString(5, datos.getObservacion());
-            insertar.setInt(6, datos.getId());
+            insertar.setInt(6, id);
             insertar.execute();
             insertar.close();
             conexion.close();
@@ -101,7 +101,7 @@ public class DatosEmpleadoController {
             buscar.execute();
             ResultSet rs = buscar.executeQuery();
             if (rs.next()) {
-                numero = rs.getInt("id");
+                numero = rs.getInt("id") + 1;
             }
             buscar.close();
             conexion.close();
