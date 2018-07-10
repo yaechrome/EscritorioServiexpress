@@ -172,11 +172,11 @@ public class UsuarioController {
         }
         return lista;
     }
-    
-    public boolean existeUsername(String user){
+
+    public boolean existeUsername(String user) {
         boolean existe = false;
         try {
-            
+
             Connection conexion = Conexion.getConexion();
             String query = "select * from usuario where username=?";
             PreparedStatement buscar = conexion.prepareStatement(query);
@@ -196,10 +196,5 @@ public class UsuarioController {
         }
         return existe;
     }
-    
-    public DatosEmpleado buscarDatosEmpleado (int idUsuario){
-        
-        
-        
-    }
+
 }
