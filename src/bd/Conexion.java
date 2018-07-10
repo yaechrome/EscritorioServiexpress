@@ -9,7 +9,7 @@ public class Conexion {
         Connection connection = null;
         try {
             String driverClassName = "oracle.jdbc.driver.OracleDriver";
-            String driverUrl = "jdbc:oracle:thin:@//mydbinstance.cal8mkx5xh77.us-east-2.rds.amazonaws.com/ORCL";
+            String driverUrl = "jdbc:oracle:thin:@//127.0.0.1/XE";
             Class.forName(driverClassName);
             connection = DriverManager.getConnection(
                     driverUrl, "TALLER_SERVIEXPRESS", "TALLER_SERVIEXPRESS");
